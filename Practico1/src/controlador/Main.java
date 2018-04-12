@@ -56,7 +56,7 @@ public class Main {
         //Crear Materiales
         Material m1 = new Material("Algodon");
         Material m2 = new Material("Poliester");
-        Material m3 =  new Material("Lino");
+        
         
         //Agregar Materiales al Controlador
         d1.agregarMaterial(m1);

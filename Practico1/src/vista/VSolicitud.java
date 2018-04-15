@@ -122,6 +122,7 @@ public class VSolicitud extends javax.swing.JDialog{
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //this.controlador.llamadoMenu("MENU_PRENDA");
+        Administrador.abrirPrenda();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

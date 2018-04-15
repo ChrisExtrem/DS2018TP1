@@ -12,7 +12,7 @@ import modelo.Sucursal;
 
 /**
  *
- * @author chris
+ * @author grupo5
  */
 public class VMenu extends javax.swing.JFrame {
     
@@ -27,7 +27,6 @@ public class VMenu extends javax.swing.JFrame {
         for(Sucursal sucursal: Persistencia.getSucursales()){  //Utiliza un ForEach 
             modelo.addElement(sucursal.getNombre());   // para cargar OBJETOS SUCURSAL en el modelo de combobox  
         }
-        
         comboBox.setModel(modelo);//Setea(Reemplaza) el Modelo por defecto, por el ya definido aqui
         
     }
@@ -148,7 +147,6 @@ public class VMenu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
         Administrador.abrirExistencia();
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -15,7 +15,7 @@ import modelo.Talle;
 
 /**
  *
- * @author chris
+ * @author grupo5
  */
 public class Persistencia {
     
@@ -26,29 +26,29 @@ public class Persistencia {
     private static ArrayList<Material> materiales = new ArrayList<Material>();
     private static ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 
+    //Constructor
     public Persistencia() {
     }
     
-    
-    
-    public void agregarSucursal(Sucursal sucursal)
+    //Metodos
+    public static void agregarSucursal(Sucursal sucursal)
     {
-        this.sucursales.add(sucursal);
+        sucursales.add(sucursal);
     }
     
-    public void agregarSolicitud(Solicitud solicitud)
+    public static void agregarSolicitud(Solicitud solicitud)
     {
-        this.solicitudes.add(solicitud);
+        solicitudes.add(solicitud);
     }
     
-    public void agregarColor(Color color)
+    public static void agregarColor(Color color)
     {
-        this.colores.add(color);
+        colores.add(color);
     }
     
-    public void agregarTalle(Talle talle)
+    public static void agregarTalle(Talle talle)
     {
-        this.talles.add(talle);
+        talles.add(talle);
     }
     
     public void agregarMaterial(Material material)

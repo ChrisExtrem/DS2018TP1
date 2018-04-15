@@ -74,7 +74,7 @@ public class Controlador {
                 
                 break;                
             case "MENU_PRENDA":
-                this.vprenda=new VPrenda(this,this.vsolicitud,true);
+                //this.vprenda=new VPrenda(this,this.vsolicitud,true);
                 
                 this.vprenda.setLocationRelativeTo(null);
                 

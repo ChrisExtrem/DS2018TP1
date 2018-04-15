@@ -16,6 +16,7 @@ public class Administrador {
     private static VConsultar vconsultar;
     private static VExistencia vexistencia;
     private static VProcesar vprocesar;
+    private static VPrenda vprenda;
     
     //Constructor
     public Administrador() {
@@ -52,4 +53,11 @@ public class Administrador {
         vprocesar=new VProcesar(vconsultar,true);
         vprocesar.setVisible(true);
     }
+    
+    public static void abrirPrenda()
+    {
+        vprenda=new VPrenda(vsolicitud,true);
+        vprenda.setVisible(true);
+    }
+    
 }

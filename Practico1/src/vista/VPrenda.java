@@ -42,7 +42,7 @@ public class VPrenda extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cantidad = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        prenda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Prenda");
@@ -76,7 +76,7 @@ public class VPrenda extends javax.swing.JDialog {
 
         cantidad.setText(" ");
 
-        jTextField1.setText("jTextField1");
+        prenda.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +101,7 @@ public class VPrenda extends javax.swing.JDialog {
                                 .addComponent(jLabel3)
                                 .addGap(21, 21, 21)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(talle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(color, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -114,7 +114,7 @@ public class VPrenda extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(prenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -164,14 +164,14 @@ public class VPrenda extends javax.swing.JDialog {
 
     
 
-    public void setPrenda (DefaultComboBoxModel combo)
+    public void setPrenda (String texto)
     {
-        this.prenda.setModel(combo);
+        this.prenda.setText(texto);
     }
     
-    public Prenda getPrenda()
+    public String getPrenda()
     {
-        return (Prenda) prenda.getSelectedItem();
+        return prenda.getText();
     }
     
     public void setTalle (DefaultComboBoxModel combo)
@@ -205,7 +205,7 @@ public class VPrenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField prenda;
     private javax.swing.JComboBox<String> talle;
     // End of variables declaration//GEN-END:variables
 }

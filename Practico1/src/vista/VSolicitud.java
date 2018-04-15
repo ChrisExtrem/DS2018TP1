@@ -17,17 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VSolicitud extends javax.swing.JDialog{
 
-    /**
-     * Creates new form VSolicitud
-     * 
-     * 
-     */
-    
-    private Controlador controlador;
-    
-    public VSolicitud(Controlador controlador, VMenu vmenu, boolean b) {
-        super(vmenu,b);
-        this.controlador =  controlador;
+    //Constructor
+    public VSolicitud(java.awt.Frame parent, boolean modal) {
+        super(parent,modal);
         initComponents();
     }
     
@@ -129,7 +121,7 @@ public class VSolicitud extends javax.swing.JDialog{
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.controlador.llamadoMenu("MENU_PRENDA");
+        //this.controlador.llamadoMenu("MENU_PRENDA");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

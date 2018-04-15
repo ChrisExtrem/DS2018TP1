@@ -13,14 +13,8 @@ import controlador.Controlador;
  */
 public class VProcesar extends javax.swing.JDialog {
 
-    private Controlador controlador;
-    
-    /**
-     * Creates new form VProcesar
-     */
-    public VProcesar(Controlador controlador,java.awt.Dialog parent, boolean modal) {
+    public VProcesar(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
-        this.controlador=controlador;
         initComponents();
     }
 
@@ -66,6 +60,11 @@ public class VProcesar extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         CANCEL.setText("Cancelar");
+        CANCEL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CANCELActionPerformed(evt);
+            }
+        });
 
         OK.setText("Aceptar");
 
@@ -115,6 +114,11 @@ public class VProcesar extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CANCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_CANCELActionPerformed
 
     /**
      * @param args the command line arguments

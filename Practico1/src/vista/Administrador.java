@@ -12,15 +12,16 @@ package vista;
 public class Administrador {
     
     private static VMenu vmenu;
-
+    private static VSolicitud vsolicitud;
+    private static VConsultar vconsultar;
+    private static VExistencia vexistencia;
+    private static VProcesar vprocesar;
+    
+    //Constructor
     public Administrador() {
     }
     
-    public static void generarSolcitud()
-    {
-        
-    }
-    
+    //Metodos
     public static void abrirMenu()
     {
         vmenu=new VMenu();
@@ -28,5 +29,27 @@ public class Administrador {
         vmenu.setLocationRelativeTo(null);
     }
     
+    public static void abrirSolcitud()
+    {
+        vsolicitud=new VSolicitud(vmenu,true);//inicializa la ventana VSolicitud
+        vsolicitud.setVisible(true);
+    }
+        
+    public static void abrirConsultar()
+    {
+        vconsultar=new VConsultar(vmenu,true);
+        vconsultar.setVisible(true);
+    }
     
+    public static void abrirExistencia()
+    {
+        vexistencia=new VExistencia(vmenu,true);
+        vexistencia.setVisible(true);
+    }
+    
+    public static void abrirProcesar()
+    {
+        vprocesar=new VProcesar(vconsultar,true);
+        vprocesar.setVisible(true);
+    }
 }

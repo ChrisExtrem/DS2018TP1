@@ -132,7 +132,7 @@ public class VMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //Administrador.realizarSolicitud();
+        Administrador.abrirSolcitud();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -143,13 +143,13 @@ public class VMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.controlador.llamadoMenu("MENU_CONSULTAR");
+        Administrador.abrirConsultar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        this.controlador.llamadoMenu("MENU_EXISTENCIAS");
+        Administrador.abrirExistencia();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

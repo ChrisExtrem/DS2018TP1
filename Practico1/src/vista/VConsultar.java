@@ -13,14 +13,13 @@ import controlador.Controlador;
  */
 public class VConsultar extends javax.swing.JDialog {
     
-    private Controlador controlador;
+    
 
     /**
      * Creates new form VConsultar
      */
-    public VConsultar(Controlador controlador,java.awt.Frame parent, boolean modal) {
+    public VConsultar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.controlador = controlador;
         initComponents();
         
     }
@@ -108,7 +107,8 @@ public class VConsultar extends javax.swing.JDialog {
 
     private void procesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarActionPerformed
         // TODO add your handling code here:
-        this.controlador.llamadoMenu("MENU_PROCESAR");
+        //this.controlador.llamadoMenu("MENU_PROCESAR");
+        Administrador.abrirProcesar();
     }//GEN-LAST:event_procesarActionPerformed
 
     /**

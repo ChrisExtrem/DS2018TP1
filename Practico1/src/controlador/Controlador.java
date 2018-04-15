@@ -49,7 +49,7 @@ public class Controlador {
     public void llamadoMenu(String comando)  //llamada desde la ventana Menu Principal
     {
         switch(comando){ //comando contiene un String con un valor a interpretar
-            case "MENU_GENERAR":  //Caso de Uso Realizar Solicitud
+            /*case "MENU_GENERAR":  //Caso de Uso Realizar Solicitud
                 this.vsolicitud=new VSolicitud(this, this.vmenu,true); //inicializa la ventana VSolicitud
            //aportandole: "El Controlador Mismo", "Ventana Padre", "Modal"(Pone esta ultima en primer plano)
                 this.vsolicitud.setVisible(true); //Setea como visible la ventana
@@ -59,15 +59,16 @@ public class Controlador {
                 Solicitud solicitud = new Solicitud();
                 
                 
-                break;
+                break;*/
+            
             case "MENU_CONSULTAR":
-                this.vconsultar = new VConsultar(this,this.vmenu,true);
+                //this.vconsultar = new VConsultar(this,this.vmenu,true);
                 this.vconsultar.setVisible(true);
                 this.vconsultar.setLocationRelativeTo(null);
                 
                 break;
             case "MENU_EXISTENCIAS":
-                this.vexistencia = new VExistencia(this,this.vmenu,true);
+                //this.vexistencia = new VExistencia(this,this.vmenu,true);
                 this.vexistencia.setVisible(true);
                 this.vexistencia.setLocationRelativeTo(null);
                 
@@ -107,7 +108,7 @@ public class Controlador {
                 
                 break;
             case "MENU_PROCESAR":
-                this.vprocesar=new VProcesar(this,this.vconsultar,true);
+                //this.vprocesar=new VProcesar(this,this.vconsultar,true);
                 this.vprocesar.setVisible(true);
                 this.vprocesar.setLocationRelativeTo(null);
                 

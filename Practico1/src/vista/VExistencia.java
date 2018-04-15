@@ -12,14 +12,10 @@ import controlador.Controlador;
  * @author chris
  */
 public class VExistencia extends javax.swing.JDialog {
-    private Controlador controlador;
-
-    /**
-     * Creates new form VExistencia
-     */
-    public VExistencia(Controlador controlador,java.awt.Frame parent, boolean modal) {
+    
+    //Constructor
+    public VExistencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.controlador = controlador;
         initComponents();
     }
 

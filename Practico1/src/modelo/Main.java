@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package modelo;
+import controlador.Controlador;
+import modelo.Persistencia;
 import java.time.LocalDate;
 import java.time.Month;
 import modelo.*;
+import vista.Administrador;
 /**
  *
  * @author chris
@@ -18,7 +21,8 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Controlador p1 =  new Controlador();
+        
+        //Controlador p1 =  new Controlador();
         Persistencia d1 = new Persistencia();
         
         //Crear Sucursales
@@ -79,8 +83,12 @@ public class Main {
         
         System.out.println(fecha2.toString());*/
         
-        p1.setDatos(d1);
-        p1.ejecutar();
+        /*p1.setDatos(d1);
+        p1.ejecutar();*/
+        
+        Administrador.abrirMenu();
+        
+        
     }
     
 }

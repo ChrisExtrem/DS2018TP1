@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package modelo;
 
 import java.util.ArrayList;
 import modelo.Color;
@@ -19,12 +19,12 @@ import modelo.Talle;
  */
 public class Persistencia {
     
-    private ArrayList<Sucursal> sucursales = new ArrayList<Sucursal>(); 
-    private ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
-    private ArrayList<Color> colores = new ArrayList<Color>();
-    private ArrayList<Talle> talles = new ArrayList<Talle>();
-    private ArrayList<Material> materiales = new ArrayList<Material>();
-    private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
+    private static ArrayList<Sucursal> sucursales = new ArrayList<Sucursal>(); 
+    private static ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
+    private static ArrayList<Color> colores = new ArrayList<Color>();
+    private static ArrayList<Talle> talles = new ArrayList<Talle>();
+    private static ArrayList<Material> materiales = new ArrayList<Material>();
+    private static ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 
     public Persistencia() {
     }
@@ -61,7 +61,7 @@ public class Persistencia {
         this.prendas.add(prenda);
     }
 
-    public ArrayList<Sucursal> getSucursales() {
+    public static ArrayList<Sucursal> getSucursales() {
         return sucursales;
     }
 

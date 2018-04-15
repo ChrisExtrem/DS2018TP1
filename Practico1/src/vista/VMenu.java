@@ -7,6 +7,8 @@ package vista;
 
 import controlador.Controlador;
 import javax.swing.DefaultComboBoxModel;
+import modelo.Persistencia;
+import modelo.Sucursal;
 
 /**
  *
@@ -21,12 +23,15 @@ public class VMenu extends javax.swing.JFrame {
      */
     public VMenu() {
         initComponents();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
+        for(Sucursal sucursal: Persistencia.getSucursales()){  //Utiliza un ForEach 
+            modelo.addElement(sucursal.getNombre());   // para cargar OBJETOS SUCURSAL en el modelo de combobox  
+        }
+        
+        comboBox.setModel(modelo);//Setea(Reemplaza) el Modelo por defecto, por el ya definido aqui
+        
     }
     
-    public VMenu(Controlador controlador) {
-        this.controlador=controlador;
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,7 +132,7 @@ public class VMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.controlador.llamadoMenu("MENU_GENERAR");
+        //Administrador.realizarSolicitud();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

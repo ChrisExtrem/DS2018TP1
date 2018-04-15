@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import modelo.Persistencia;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -30,7 +31,7 @@ public class Controlador {
     }
 
     
-    public void ejecutar(){  //Inicia el programa
+    /*public void ejecutar(){  //Inicia el programa
         
         this.vmenu=new VMenu(this); //inicializa Menu Principal(VMenu) 
         this.vmenu.setVisible(true); //hace visible la Ventana
@@ -41,7 +42,7 @@ public class Controlador {
         }
         this.vmenu.setComboBox(modelo);  //Setea(Reemplaza) el Modelo por defecto, por el ya definido aqui
         
-    }
+    }*/
 
     
     

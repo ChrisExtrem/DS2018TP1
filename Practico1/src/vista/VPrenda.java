@@ -171,7 +171,7 @@ public class VPrenda extends javax.swing.JDialog {
     
     public String getPrenda()
     {
-        return prenda.getText();
+        return prenda.getText();//Hola
     }
     
     public void setTalle (DefaultComboBoxModel combo)

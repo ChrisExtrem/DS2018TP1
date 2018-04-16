@@ -5,6 +5,12 @@
  */
 package vista;
 
+import javax.swing.DefaultComboBoxModel;
+import modelo.Color;
+import modelo.Persistencia;
+import modelo.Sucursal;
+import modelo.Talle;
+
 /**
  *
  * @author chris
@@ -25,15 +31,22 @@ public class Administrador {
     //Metodos
     public static void abrirMenu()
     {
-        vmenu=new VMenu();
-        vmenu.setVisible(true);
-        vmenu.setLocationRelativeTo(null);
+        vmenu=new VMenu(); //instancia la ventana
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
+        for(Sucursal sucursal: Persistencia.getSucursales()){  //Utiliza un ForEach 
+            modelo.addElement(sucursal.getNombre());   // para cargar OBJETOS SUCURSAL en el modelo de combobox  
+        }
+        vmenu.setComboBoxSucursal(modelo);//Setea(Reemplaza) el Modelo por defecto, por el ya definido aqui
+        
+        vmenu.setVisible(true); //hace visible la ventana
+        vmenu.setLocationRelativeTo(null); //configura su posicion centrada
     }
     
     public static void abrirSolcitud()
     {
-        vsolicitud=new VSolicitud(vmenu,true);//inicializa la ventana VSolicitud
-        vsolicitud.setVisible(true);
+        vsolicitud=new VSolicitud(vmenu,true);//inicializa la ventana
+        vsolicitud.setVisible(true);  //hace visible la ventana
     }
         
     public static void abrirConsultar()
@@ -54,7 +67,30 @@ public class Administrador {
         vprocesar.setVisible(true);
     }
     
-    public static void abrirPrenda()
+    public static void abrirAgregarPrenda()
+    {
+        vprenda=new VPrenda(vsolicitud,true); //incializar ventana Vsolicitud
+        
+        //Carga con los datos Disponibles de Colores
+                DefaultComboBoxModel modeloColor = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
+                    for(Color color: Persistencia.getColores())
+                    {  //Utiliza un ForEach 
+                        modeloColor.addElement(color.getDescripcion());   // para cargar OBJETOS en el modelo de combobox  
+                    }
+                vprenda.setComboBoxColor(modeloColor);
+        
+        //Carga con los datos Disponibles de Talles
+                DefaultComboBoxModel modeloTalle = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
+                    for(Talle talle: Persistencia.getTalles())
+                    {  //Utiliza un ForEach 
+                        modeloTalle.addElement(talle.getDescripcion());   // para cargar OBJETOS en el modelo de combobox  
+                    }
+                vprenda.setComboBoxTalle(modeloTalle);
+                
+        vprenda.setVisible(true); //Hace Visible la Ventana
+    }
+    
+    public static void abrirMdificarPrenda()
     {
         vprenda=new VPrenda(vsolicitud,true);
         vprenda.setVisible(true);

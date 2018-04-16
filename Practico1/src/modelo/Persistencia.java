@@ -51,62 +51,62 @@ public class Persistencia {
         talles.add(talle);
     }
     
-    public void agregarMaterial(Material material)
+    public static void agregarMaterial(Material material)
     {
-        this.materiales.add(material);
+        materiales.add(material);
     }
     
-    public void agregarPrenda(Prenda prenda)
+    public static void agregarPrenda(Prenda prenda)
     {
-        this.prendas.add(prenda);
+        prendas.add(prenda);
     }
 
     public static ArrayList<Sucursal> getSucursales() {
         return sucursales;
     }
 
-    public void setSucursales(ArrayList<Sucursal> sucursales) {
-        this.sucursales = sucursales;
+    public static void setSucursales(ArrayList<Sucursal> sucursales) {
+        Persistencia.sucursales = sucursales;
     }
 
-    public ArrayList<Solicitud> getSolicitudes() {
+    public static ArrayList<Solicitud> getSolicitudes() {
         return solicitudes;
     }
 
-    public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
-        this.solicitudes = solicitudes;
+    public static void setSolicitudes(ArrayList<Solicitud> solicitudes) {
+        Persistencia.solicitudes = solicitudes;
     }
 
-    public ArrayList<Color> getColores() {
+    public static ArrayList<Color> getColores() {
         return colores;
     }
 
-    public void setColores(ArrayList<Color> colores) {
-        this.colores = colores;
+    public static void setColores(ArrayList<Color> colores) {
+        Persistencia.colores = colores;
     }
 
-    public ArrayList<Talle> getTalles() {
+    public static ArrayList<Talle> getTalles() {
         return talles;
     }
 
-    public void setTalles(ArrayList<Talle> talles) {
-        this.talles = talles;
+    public static void setTalles(ArrayList<Talle> talles) {
+        Persistencia.talles = talles;
     }
 
     public ArrayList<Material> getMateriales() {
         return materiales;
     }
 
-    public void setMateriales(ArrayList<Material> materiales) {
-        this.materiales = materiales;
+    public static void setMateriales(ArrayList<Material> materiales) {
+        Persistencia.materiales = materiales;
     }
 
     public ArrayList<Prenda> getPrendas() {
         return prendas;
     }
 
-    public void setPrendas(ArrayList<Prenda> prendas) {
-        this.prendas = prendas;
+    public static void setPrendas(ArrayList<Prenda> prendas) {
+        Persistencia.prendas = prendas;
     }
     
 }

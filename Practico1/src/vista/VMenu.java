@@ -7,8 +7,6 @@ package vista;
 
 import controlador.Controlador;
 import javax.swing.DefaultComboBoxModel;
-import modelo.Persistencia;
-import modelo.Sucursal;
 
 /**
  *
@@ -23,12 +21,6 @@ public class VMenu extends javax.swing.JFrame {
      */
     public VMenu() {
         initComponents();
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
-        for(Sucursal sucursal: Persistencia.getSucursales()){  //Utiliza un ForEach 
-            modelo.addElement(sucursal.getNombre());   // para cargar OBJETOS SUCURSAL en el modelo de combobox  
-        }
-        comboBox.setModel(modelo);//Setea(Reemplaza) el Modelo por defecto, por el ya definido aqui
-        
     }
     
 
@@ -42,7 +34,7 @@ public class VMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        comboBox = new javax.swing.JComboBox<>();
+        cmbSucursal = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -53,7 +45,7 @@ public class VMenu extends javax.swing.JFrame {
 
         jLabel1.setText("Sucursal");
 
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("REALIZAR SOLICITUDES");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,22 +80,19 @@ public class VMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addComponent(jButton2)
+                        .addGap(33, 33, 33)
+                        .addComponent(jbuttonSalir))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(60, 60, 60)
-                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbuttonSalir)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,19 +100,16 @@ public class VMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(cmbSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(27, 27, 27)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(52, 52, 52))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbuttonSalir)
-                        .addGap(34, 34, 34))))
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
+                .addGap(10, 10, 10)
+                .addComponent(jbuttonSalir)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -157,9 +143,9 @@ public class VMenu extends javax.swing.JFrame {
      * 
      */
     
-    public void setComboBox (DefaultComboBoxModel combo)
+    public void setComboBoxSucursal (DefaultComboBoxModel combo)
     {
-        this.comboBox.setModel(combo);
+        this.cmbSucursal.setModel(combo);
     }
     
     
@@ -200,7 +186,7 @@ public class VMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JComboBox<String> cmbSucursal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

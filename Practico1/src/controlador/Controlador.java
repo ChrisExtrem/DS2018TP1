@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import vista.VProcesar;
 import modelo.Persistencia;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -114,7 +115,7 @@ public class Controlador {
                 
                 break;
             case "AGREGAR_PRENDA":
-                
+               /* 
                DefaultTableModel modeloTabla = (DefaultTableModel) this.vsolicitud.getTabla().getModel(); 
                 modeloTabla.setColumnCount(0);
                 modeloTabla.setNumRows(0);
@@ -131,7 +132,7 @@ public class Controlador {
                modeloTabla.addRow(fila);
                this.vsolicitud.setTabla(modeloTabla);
                
-               this.vsolicitud.setVisible(true);
+               this.vsolicitud.setVisible(true);*/
                 break;
                 
         }

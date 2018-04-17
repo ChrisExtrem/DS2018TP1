@@ -6,6 +6,8 @@
 package vista;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Color;
 import modelo.Persistencia;
 import modelo.Sucursal;
@@ -87,6 +89,9 @@ public class Administrador {
                     }
                 vprenda.setComboBoxTalle(modeloTalle);
                 
+        vprenda.setTextFielCantidad(true); //Habilita los Campos
+        vprenda.setTextFielPrenda(true);
+                
         vprenda.setVisible(true); //Hace Visible la Ventana
     }
     
@@ -95,5 +100,31 @@ public class Administrador {
         vprenda=new VPrenda(vsolicitud,true);
         vprenda.setVisible(true);
     }
+    
+   public static void agregarLinea()
+    {
+        DefaultTableModel modeloTabla = (DefaultTableModel)vsolicitud.getTabla().getModel(); 
+               Object[] fila = new Object[4];
+               fila[0] = vprenda.getPrenda();
+               fila[1] =vprenda.getColor();
+               fila[2] =vprenda.getTalle();
+               fila[3] =vprenda.getCantidad();
+               
+               modeloTabla.addRow(fila);
+               vsolicitud.setTabla(modeloTabla);     
+    }
+   
+   public static void eliminarLinea()
+   {
+       DefaultTableModel modeloTabla = (DefaultTableModel)vsolicitud.getTabla().getModel();
+       int lineaSelect = vsolicitud.getTabla().getSelectedRow();
+       if(lineaSelect<0)
+       {
+           JOptionPane.showMessageDialog(vsolicitud, "Tabla Vacia o No Ha Seleccionado una fila");
+       }else{
+       modeloTabla.removeRow(lineaSelect);
+       vsolicitud.setTabla(modeloTabla);
+       }
+   }
     
 }

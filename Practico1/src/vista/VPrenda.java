@@ -41,8 +41,8 @@ public class VPrenda extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        cantidad = new javax.swing.JTextField();
-        prenda = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
+        txtPrenda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Prenda");
@@ -58,7 +58,7 @@ public class VPrenda extends javax.swing.JDialog {
 
         jLabel3.setText("Prenda");
 
-        jButton1.setText("Agregar");
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -73,8 +73,6 @@ public class VPrenda extends javax.swing.JDialog {
         });
 
         jLabel5.setText("Cantidad");
-
-        cantidad.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,8 +98,8 @@ public class VPrenda extends javax.swing.JDialog {
                                 .addGap(21, 21, 21)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbColor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(prenda)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                            .addComponent(txtPrenda)
                             .addComponent(cmbTalle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -111,7 +109,7 @@ public class VPrenda extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(prenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -123,7 +121,7 @@ public class VPrenda extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -141,57 +139,77 @@ public class VPrenda extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //this.controlador.llamadoMenu("AGREGAR_PRENDA");
+        if(this.txtPrenda.isEnabled())
+        {
+            Administrador.agregarLinea();
+        }
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    //Metodos
     //Cantidad
     public int getCantidad() {
-        return Integer.parseInt(cantidad.getText().trim());
+        return Integer.parseInt(txtCantidad.getText().trim());
     }
 
-    public void setCantidad(JTextField cantidad) {
-        this.cantidad = cantidad;
+    public void setCantidad(int cantidad) {
+        this.txtCantidad.setText(Integer.toString(cantidad));
+    }
+    
+    public void setTextFielCantidad(boolean b){
+        this.txtCantidad.setEnabled(b);
     }
 
     //Prenda
-    public void setComboBoxPrenda (String texto)
+    public int getPrenda()
     {
-        this.prenda.setText(texto);
+        return Integer.parseInt(txtPrenda.getText());
     }
     
-    public String getPrenda()
+    public void setPrenda (int prenda)
     {
-        return prenda.getText();
+        this.txtPrenda.setText(Integer.toString(prenda));
+    }
+    
+    public void setTextFielPrenda(boolean b){
+        this.txtPrenda.setEnabled(b);
     }
     
     //Talle
-    public void setComboBoxTalle (DefaultComboBoxModel combo)
-    {
-        this.cmbTalle.setModel(combo);
-    }
-    
     public String getTalle()
     {
         return cmbTalle.getSelectedItem().toString();
     }
     
-    //Color
-    public void setComboBoxColor (DefaultComboBoxModel combo)
+    public void setTalle(String talle)
     {
-        this.cmbColor.setModel(combo);
+        this.cmbTalle.setSelectedItem(talle);
     }
     
+    public void setComboBoxTalle (DefaultComboBoxModel combo)
+    {
+        this.cmbTalle.setModel(combo);
+    }
+ 
+    //Color
     public String getColor()
     {
         return cmbColor.getSelectedItem().toString();
     }
     
+    public void setColor(String color)
+    {
+        this.cmbTalle.setSelectedItem(color);
+    }
+    
+    public void setComboBoxColor (DefaultComboBoxModel combo)
+    {
+        this.cmbColor.setModel(combo);
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cantidad;
     private javax.swing.JComboBox<String> cmbColor;
     private javax.swing.JComboBox<String> cmbTalle;
     private javax.swing.JButton jButton1;
@@ -200,6 +218,7 @@ public class VPrenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField prenda;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtPrenda;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,17 +10,22 @@ import java.util.ArrayList;
 import controlador.Controlador;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.Solicitud;
 
 /**
  *
  * @author chris
  */
 public class VSolicitud extends javax.swing.JDialog{
+    
+    //Atributos
+    private Solicitud solicitud;
 
     //Constructor
     public VSolicitud(java.awt.Frame parent, boolean modal) {
         super(parent,modal);
         initComponents();
+        solicitud=new Solicitud();
     }
     
     
@@ -45,10 +50,11 @@ public class VSolicitud extends javax.swing.JDialog{
 
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tblLinea = new javax.swing.JTable();
         cancelar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -56,15 +62,15 @@ public class VSolicitud extends javax.swing.JDialog{
         setTitle("Realizar Solicitud");
         setLocation(new java.awt.Point(400, 200));
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tblLinea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Prenda", "Material", "Talle", "Color", "Cantidad"
+                "Codigo", "Talle", "Color", "Cant_Solicitada"
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane1.setViewportView(tblLinea);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,12 +79,24 @@ public class VSolicitud extends javax.swing.JDialog{
             }
         });
 
-        jButton1.setText("Enviar Solicitud");
+        jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Agregar Prenda");
+        jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -89,26 +107,32 @@ public class VSolicitud extends javax.swing.JDialog{
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cancelar)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(jButton1)
-                        .addGap(102, 102, 102)
-                        .addComponent(jButton2)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelar)
+                        .addGap(43, 43, 43))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(cancelar)
-                .addContainerGap())
+                    .addComponent(jButton2)
+                    .addComponent(cancelar)
+                    .addComponent(jButton3))
+                .addGap(56, 56, 56))
         );
 
         pack();
@@ -125,6 +149,15 @@ public class VSolicitud extends javax.swing.JDialog{
         Administrador.abrirAgregarPrenda();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Administrador.eliminarLinea();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,22 +173,23 @@ public class VSolicitud extends javax.swing.JDialog{
     private javax.swing.JButton cancelar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable tblLinea;
     // End of variables declaration//GEN-END:variables
 
     
     public void setTabla(DefaultTableModel tabla) {
-        this.tabla.setModel(tabla);
+        this.tblLinea.setModel(tabla);
     }
 
     public JTable getTabla() {
-        return tabla;
+        return tblLinea;
     }
 
     public void setTabla(JTable tabla) {
-        this.tabla = tabla;
+        this.tblLinea = tabla;
     }
 
     

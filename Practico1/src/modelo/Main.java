@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package modelo;
-import controlador.Controlador;
 import modelo.Persistencia;
 import java.time.LocalDate;
 import java.time.Month;
@@ -23,39 +22,39 @@ public class Main {
         
         
         //Controlador p1 =  new Controlador();
-        Persistencia d1 = new Persistencia();
+        //Persistencia d1 = new Persistencia();
         
         //Crear Sucursales
         Sucursal suc1 =  new Sucursal(1,"Sucursal_1","Maipu 485");
         Sucursal suc2 =  new Sucursal(2,"Sucursal_2","25 de mayo 75");
         
         //Agregar Sucursales al Controlador
-        d1.agregarSucursal(suc1);
-        d1.agregarSucursal(suc2);
+        Persistencia.agregarSucursal(suc1);
+        Persistencia.agregarSucursal(suc2);
         
         //Crear Solicitudes Vacias
         Solicitud soli1 = new Solicitud();
         Solicitud soli2 = new Solicitud();
         
         //Agregar Solicitudes al Controlador
-        d1.agregarSolicitud(soli1);
-        d1.agregarSolicitud(soli2);
+        Persistencia.agregarSolicitud(soli1);
+        Persistencia.agregarSolicitud(soli2);
         
         //Crear Colores
         Color c1 = new Color("Rojo");
         Color c2 = new Color("Azul");
         
         //Agregar Colores al Controlador
-        d1.agregarColor(c1);
-        d1.agregarColor(c2);
+        Persistencia.agregarColor(c1);
+        Persistencia.agregarColor(c2);
         
         //Crear Talles
         Talle t1=new Talle("XL");
         Talle t2=new Talle("S");
         
         //Cargar Talles al Controlador
-        d1.agregarTalle(t1);
-        d1.agregarTalle(t2);
+        Persistencia.agregarTalle(t1);
+        Persistencia.agregarTalle(t2);
         
         //Crear Materiales
         Material m1 = new Material("Algodon");
@@ -63,16 +62,16 @@ public class Main {
         
         
         //Agregar Materiales al Controlador
-        d1.agregarMaterial(m1);
-        d1.agregarMaterial(m2);
+        Persistencia.agregarMaterial(m1);
+        Persistencia.agregarMaterial(m2);
         
         //Crear Prendas
         Prenda prend1 = new Prenda(1,"Remera",250.56,m1);
         Prenda prend2 = new Prenda(2,"Pantalon",400.00,m2);
         
         //Agregar Prendas al Controlador
-        d1.agregarPrenda(prend1);
-        d1.agregarPrenda(prend2);
+        Persistencia.agregarPrenda(prend1);
+        Persistencia.agregarPrenda(prend2);
         
         /*LocalDate fecha =  LocalDate.now();
         System.out.println(fecha);

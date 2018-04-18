@@ -5,16 +5,13 @@
  */
 package vista;
 
-import java.util.ArrayList;
-
-import controlador.Controlador;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Solicitud;
 
 /**
  *
- * @author chris
+ * @author grupo5
  */
 public class VSolicitud extends javax.swing.JDialog{
     

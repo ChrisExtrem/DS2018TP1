@@ -5,8 +5,6 @@
  */
 package vista;
 
-import controlador.Controlador;
-
 /**
  *
  * @author chris

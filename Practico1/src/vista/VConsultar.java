@@ -5,11 +5,9 @@
  */
 package vista;
 
-import controlador.Controlador;
-
 /**
  *
- * @author chris
+ * @author grupo5
  */
 public class VConsultar extends javax.swing.JDialog {
     

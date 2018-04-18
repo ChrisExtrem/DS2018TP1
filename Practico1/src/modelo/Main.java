@@ -88,9 +88,6 @@ public class Main {
         Administrador.abrirMenu();
         
         //System.out.println(Persistencia.getSolicitudes());
-        System.out.print(Persistencia.getSolicitudes());
-        
-        
     }
     
 }

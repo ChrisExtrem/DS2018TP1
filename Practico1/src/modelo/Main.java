@@ -33,12 +33,12 @@ public class Main {
         Persistencia.agregarSucursal(suc2);
         
         //Crear Solicitudes Vacias
-        Solicitud soli1 = new Solicitud();
-        Solicitud soli2 = new Solicitud();
+        /*Solicitud soli1 = new Solicitud();
+        Solicitud soli2 = new Solicitud();*/
         
         //Agregar Solicitudes al Controlador
-        Persistencia.agregarSolicitud(soli1);
-        Persistencia.agregarSolicitud(soli2);
+        /*Persistencia.agregarSolicitud(soli1);
+        Persistencia.agregarSolicitud(soli2);*/
         
         //Crear Colores
         Color c1 = new Color("Rojo");
@@ -87,7 +87,8 @@ public class Main {
         
         Administrador.abrirMenu();
         
-        
+        //System.out.println(Persistencia.getSolicitudes());
+        System.out.print(Persistencia.getSolicitudes());
         
         
     }

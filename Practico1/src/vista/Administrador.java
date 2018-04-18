@@ -5,11 +5,15 @@
  */
 package vista;
 
+import java.time.LocalDate;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Color;
+import modelo.Empresa;
+import modelo.LineaDeSolicitud;
 import modelo.Persistencia;
+import modelo.Solicitud;
 import modelo.Sucursal;
 import modelo.Talle;
 
@@ -103,15 +107,23 @@ public class Administrador {
     
    public static void agregarLinea()
     {
+        //Agregacion a la tabla
         DefaultTableModel modeloTabla = (DefaultTableModel)vsolicitud.getTabla().getModel(); 
                Object[] fila = new Object[4];
                fila[0] = vprenda.getPrenda();
                fila[1] =vprenda.getColor();
                fila[2] =vprenda.getTalle();
                fila[3] =vprenda.getCantidad();
-               
                modeloTabla.addRow(fila);
-               vsolicitud.setTabla(modeloTabla);     
+               vsolicitud.setTabla(modeloTabla);
+               
+               //Agregacion de la Linea a vsolicitud.solicitud
+               LineaDeSolicitud linea = new LineaDeSolicitud();
+               linea.setPrenda(Persistencia.buscarPrenda(vprenda.getPrenda()));
+               linea.setTalle(Persistencia.buscarTalle(vprenda.getTalle()));
+               linea.setColor(Persistencia.buscarColor(vprenda.getColor()));
+               linea.setCantidadSolicitada(vprenda.getCantidad());
+               vsolicitud.getSolicitud().agregarLineaDeSolicitud(linea);
     }
    
    public static void eliminarLinea()
@@ -122,9 +134,20 @@ public class Administrador {
        {
            JOptionPane.showMessageDialog(vsolicitud, "Tabla Vacia o No Ha Seleccionado una fila");
        }else{
+           //Rmueve la linea de la Tabla
        modeloTabla.removeRow(lineaSelect);
        vsolicitud.setTabla(modeloTabla);
+       
+       //Remueve la linea de vsolicitu.solicitud;
+       vsolicitud.getSolicitud().getLista().remove(lineaSelect);
        }
    }
     
+   public static void generarSolicitud()
+   {
+       Sucursal sucursalSolicitante = Persistencia.buscarSucursal(vmenu.getSucursal());
+       LocalDate fecha =LocalDate.now();
+       Solicitud solicitud = vsolicitud.getSolicitud();
+       Empresa.generarSolicitud(sucursalSolicitante,fecha,solicitud);
+   }
 }

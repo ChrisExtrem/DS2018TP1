@@ -5,12 +5,25 @@
  */
 package modelo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author chris
  */
 public class Empresa {
+
+    public Empresa() {
+    }
     
-    
+    public static void generarSolicitud(Sucursal sucursalSolicitante, LocalDate fecha, Solicitud solicitud)
+    {
+        solicitud.setSucursalSolicitante(sucursalSolicitante);
+        solicitud.setDate(fecha);
+        solicitud.setEstado(Estado.PENDIENTE);
+        
+        Persistencia.agregarSolicitud(solicitud);
+        
+    }
     
 }

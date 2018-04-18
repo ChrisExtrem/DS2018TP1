@@ -156,6 +156,8 @@ public class VSolicitud extends javax.swing.JDialog{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Administrador.generarSolicitud();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -191,6 +193,16 @@ public class VSolicitud extends javax.swing.JDialog{
     public void setTabla(JTable tabla) {
         this.tblLinea = tabla;
     }
+
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
+    }
+    
+    
 
     
 }

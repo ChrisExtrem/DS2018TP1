@@ -31,13 +31,13 @@ public class Solicitud {
         this.date = date;
         this.estado = estado;
     }
-
-   
-
     
-   
-    
+    public Solicitud(Sucursal sucursalSolicitante, LocalDate date) {
+        this.sucursalSolicitante = sucursalSolicitante;
+        this.date = date;
+    }
 
+    //Metodos
     public Estado getEstado() {
         return estado;
     }
@@ -70,14 +70,22 @@ public class Solicitud {
         this.lista = lista;
     }
 
-    
-    
     public LocalDate getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+    
+    public void agregarLineaDeSolicitud(LineaDeSolicitud linea)
+    {
+        this.lista.add(linea);
+    }
+
+    @Override
+    public String toString() {
+        return "Solicitud{" + "sucursalSolicitante=" + sucursalSolicitante + ", date=" + date + ", estado=" + estado + ", lista=" + lista + ", SucursalProcesadora=" + SucursalProcesadora + '}';
     }
     
     

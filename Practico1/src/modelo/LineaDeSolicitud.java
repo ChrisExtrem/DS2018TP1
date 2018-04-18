@@ -20,7 +20,7 @@ public class LineaDeSolicitud {
     public LineaDeSolicitud() {
     }
 
-    public LineaDeSolicitud(int cantidadSolicitada, int cantidadEnviada, Prenda prenda, Talle talle, Color color) {
+    public LineaDeSolicitud(Prenda prenda, Color color, Talle talle,int  cantidadSolicitada, int cantidadEnviada) {
         this.cantidadSolicitada = cantidadSolicitada;
         this.cantidadEnviada = cantidadEnviada;
         this.prenda = prenda;
@@ -28,6 +28,12 @@ public class LineaDeSolicitud {
         this.color = color;
     }
     
+    public LineaDeSolicitud(Prenda prenda, Color color, Talle talleint,int  cantidadSolicitada) {
+        this.cantidadSolicitada = cantidadSolicitada;
+        this.prenda = prenda;
+        this.talle = talle;
+        this.color = color;
+    }
     
 
     public int getCantidadSolicitada() {
@@ -68,6 +74,11 @@ public class LineaDeSolicitud {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "LineaDeSolicitud{" + "cantidadSolicitada=" + cantidadSolicitada + ", cantidadEnviada=" + cantidadEnviada + ", prenda=" + prenda + ", talle=" + talle + ", color=" + color + '}';
     }
     
     

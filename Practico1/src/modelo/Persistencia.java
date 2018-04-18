@@ -31,6 +31,7 @@ public class Persistencia {
     }
     
     //Metodos
+    //Geters y Seters
     public static void agregarSucursal(Sucursal sucursal)
     {
         sucursales.add(sucursal);
@@ -109,4 +110,38 @@ public class Persistencia {
         Persistencia.prendas = prendas;
     }
     
+    //Busquedas
+    public static Sucursal buscarSucursal(String sucursalBuscada)
+    {
+        Sucursal sucursalEncontrada= null;
+        for(Sucursal sucursal: Persistencia.sucursales)
+        {
+            if(sucursal.getNombre().equals(sucursalBuscada))
+            {
+               sucursalEncontrada=sucursal;
+            }
+        }
+        return sucursalEncontrada;
+    }
+    
+    public static Prenda buscarPrenda(int prendaBuscada)
+    {
+        Prenda prendaEncontrada = new Prenda();
+        
+        return prendaEncontrada;
+    }
+    
+    public static Talle buscarTalle(String talleBuscado)
+    {
+        Talle talleEncontrado = new Talle();
+        
+        return talleEncontrado;
+    }
+    
+    public static Color buscarColor(String colorBuscado)
+    {
+        Color colorEncontrado = new Color();
+        
+        return colorEncontrado;
+    }
 }

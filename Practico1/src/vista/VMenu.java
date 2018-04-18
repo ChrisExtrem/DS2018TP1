@@ -5,7 +5,6 @@
  */
 package vista;
 
-import controlador.Controlador;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -14,11 +13,6 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class VMenu extends javax.swing.JFrame {
     
-    Controlador controlador;
-
-    /**
-     * Creates new form VMenu
-     */
     public VMenu() {
         initComponents();
     }
@@ -136,22 +130,16 @@ public class VMenu extends javax.swing.JFrame {
         Administrador.abrirExistencia();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * metodos
-     * 
-     * 
-     * 
-     */
-    
     public void setComboBoxSucursal (DefaultComboBoxModel combo)
     {
         this.cmbSucursal.setModel(combo);
     }
     
-    
-    
-    
-    
+    public String getSucursal()
+    {
+        return this.cmbSucursal.getSelectedItem().toString();
+    }
+
     //Otros
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

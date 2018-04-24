@@ -6,11 +6,7 @@
 package vista;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import modelo.Color;
-import modelo.Prenda;
-import modelo.Talle;
+
 
 /**
  *
@@ -141,7 +137,7 @@ public class VPrenda extends javax.swing.JDialog {
         // TODO add your handling code here:
         if(this.txtPrenda.isEnabled())
         {
-            Administrador.agregarLinea();
+           Administrador.agregarLinea();
         }
         
         this.dispose();
@@ -207,6 +203,16 @@ public class VPrenda extends javax.swing.JDialog {
     {
         this.cmbColor.setModel(combo);
     }
+    
+    //Metodos Auxiliares - Validacion
+    private static boolean isInteger(String cadena){
+	try {
+		Integer.parseInt(cadena.replaceAll("//s",""));
+		return true;
+	} catch (NumberFormatException nfe){
+		return false;
+	}
+}
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Color;
 import modelo.Empresa;
+import modelo.Existencia;
 import modelo.LineaDeSolicitud;
 import modelo.Persistencia;
 import modelo.Solicitud;
@@ -57,13 +58,44 @@ public class Administrador {
         
     public static void abrirConsultar()
     {
-        vconsultar=new VConsultar(vmenu,true);
+        vconsultar=new VConsultar(vmenu,true); //inicializa la ventana
+        
+        //Carga la Tabla
+        DefaultTableModel modeloTabla = (DefaultTableModel)vconsultar.getTabla().getModel();
+        
+        for(Solicitud solicitud:Persistencia.getSolicitudes()){
+          
+               Object[] fila = new Object[4];
+               fila[0] = solicitud.getDate().toString();
+               fila[1] = solicitud.getSucursalSolicitante().getNombre();
+               fila[2] = solicitud.getSucursalProcesadora().getNombre();
+               fila[3] = solicitud.getEstado().getTexto();
+               modeloTabla.addRow(fila);
+               
+        }
+        vconsultar.setTabla(modeloTabla);
+        
         vconsultar.setVisible(true);
     }
     
     public static void abrirExistencia()
     {
         vexistencia=new VExistencia(vmenu,true);
+        
+        //Carga la Tabla
+        DefaultTableModel modeloTabla = (DefaultTableModel)vexistencia.getTabla().getModel();
+        
+        for(Existencia existencia:Persistencia.buscarSucursal(vmenu.getSucursal()).getExistencias()){
+          
+               Object[] fila = new Object[4];
+               fila[0] = existencia.getPrenda().getCodigo();
+               fila[1] = existencia.getColor().getDescripcion();
+               fila[2] = existencia.getTalle().getDescripcion();
+               fila[3] = existencia.getCantidad();
+               modeloTabla.addRow(fila);
+               
+        }
+        vexistencia.setTabla(modeloTabla);
         vexistencia.setVisible(true);
     }
     
@@ -124,6 +156,7 @@ public class Administrador {
                linea.setColor(Persistencia.buscarColor(vprenda.getColor()));
                linea.setCantidadSolicitada(vprenda.getCantidad());
                vsolicitud.getSolicitud().agregarLineaDeSolicitud(linea);
+               System.out.println(vprenda.getPrenda());
     }
    
    public static void eliminarLinea()
@@ -132,6 +165,7 @@ public class Administrador {
        int lineaSelect = vsolicitud.getTabla().getSelectedRow();
        if(lineaSelect<0)
        {
+           //Muestra un msj de error ya que la seleccion es invalida
            JOptionPane.showMessageDialog(vsolicitud, "Tabla Vacia o No Ha Seleccionado una fila");
        }else{
            //Rmueve la linea de la Tabla
@@ -150,4 +184,14 @@ public class Administrador {
        Solicitud solicitud = vsolicitud.getSolicitud();
        Empresa.generarSolicitud(sucursalSolicitante,fecha,solicitud);
    }
+   
+   //Funciones Auxiliares
+   private static boolean isInteger(String cadena){
+	try {
+		Integer.parseInt(cadena);
+		return true;
+	} catch (NumberFormatException e){
+		return false;
+	}
+}
 }

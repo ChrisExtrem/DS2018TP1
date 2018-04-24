@@ -58,6 +58,11 @@ public class Sucursal {
     public void setExistencias(ArrayList<Existencia> existencias) {
         this.existencias = existencias;
     }
+    
+    public void agregarExistencia(Existencia existencia)
+    {
+        this.existencias.add(existencia);
+    }
 
     @Override
     public String toString() {

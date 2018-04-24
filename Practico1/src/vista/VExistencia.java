@@ -5,6 +5,9 @@
  */
 package vista;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author chris
@@ -27,28 +30,22 @@ public class VExistencia extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblExistencias = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Existencia");
         setLocation(new java.awt.Point(400, 200));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblExistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "cod_Prenda", "color", "talle", "stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setText("Actualizar");
+        jScrollPane1.setViewportView(tblExistencias);
 
         jButton2.setText("Atras");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -66,9 +63,7 @@ public class VExistencia extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(56, 275, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(60, 60, 60))
         );
@@ -78,9 +73,7 @@ public class VExistencia extends javax.swing.JDialog {
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -95,12 +88,24 @@ public class VExistencia extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+
+    
+    
+    public JTable getTabla() {
+        return tblExistencias;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public void setTabla(DefaultTableModel tabla) {
+        this.tblExistencias.setModel(tabla);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblExistencias;
     // End of variables declaration//GEN-END:variables
 }

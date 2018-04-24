@@ -11,7 +11,7 @@ import modelo.*;
 import vista.Administrador;
 /**
  *
- * @author chris
+ * @author grupo5
  */
 public class Main {
 
@@ -21,9 +21,6 @@ public class Main {
     public static void main(String[] args) {
         
         
-        //Controlador p1 =  new Controlador();
-        //Persistencia d1 = new Persistencia();
-        
         //Crear Sucursales
         Sucursal suc1 =  new Sucursal(1,"Sucursal_1","Maipu 485");
         Sucursal suc2 =  new Sucursal(2,"Sucursal_2","25 de mayo 75");
@@ -31,14 +28,6 @@ public class Main {
         //Agregar Sucursales al Controlador
         Persistencia.agregarSucursal(suc1);
         Persistencia.agregarSucursal(suc2);
-        
-        //Crear Solicitudes Vacias
-        /*Solicitud soli1 = new Solicitud();
-        Solicitud soli2 = new Solicitud();*/
-        
-        //Agregar Solicitudes al Controlador
-        /*Persistencia.agregarSolicitud(soli1);
-        Persistencia.agregarSolicitud(soli2);*/
         
         //Crear Colores
         Color c1 = new Color("Rojo");
@@ -73,6 +62,15 @@ public class Main {
         Persistencia.agregarPrenda(prend1);
         Persistencia.agregarPrenda(prend2);
         
+        //Crea Existencias
+        Existencia ex1 = new Existencia(prend1,c1,t1,1);
+        Existencia ex2 = new Existencia(prend2,c2,t2,2);
+         
+        //Agregar Existencias a las Sucursales;
+        Persistencia.buscarSucursal("Sucursal_1").agregarExistencia(ex1);
+        Persistencia.buscarSucursal("Sucursal_1").agregarExistencia(ex2);
+        
+        
         /*LocalDate fecha =  LocalDate.now();
         System.out.println(fecha);
         LocalDate fecha2 = LocalDate.of(2018, Month.DECEMBER, 4);
@@ -88,6 +86,7 @@ public class Main {
         Administrador.abrirMenu();
         
         //System.out.println(Persistencia.getSolicitudes());
+        //System.out.println(Persistencia.buscarSucursal("sucursal_1").getNombre());
     }
     
 }

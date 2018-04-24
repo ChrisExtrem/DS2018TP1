@@ -5,6 +5,9 @@
  */
 package vista;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author grupo5
@@ -22,6 +25,14 @@ public class VConsultar extends javax.swing.JDialog {
         
     }
 
+    public JTable getTabla() {
+        return tblConsultar;
+    }
+
+    public void setTabla(DefaultTableModel tabla) {
+        this.tblConsultar.setModel(tabla);
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +44,7 @@ public class VConsultar extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblConsultar = new javax.swing.JTable();
         procesar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
 
@@ -41,18 +52,15 @@ public class VConsultar extends javax.swing.JDialog {
         setTitle("Consultar Solicitudes");
         setLocation(new java.awt.Point(400, 200));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblConsultar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fecha", "Suc_Solicitante", "Suc_Procesadora", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblConsultar);
 
         procesar.setText("Procesar");
         procesar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +125,7 @@ public class VConsultar extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton procesar;
+    private javax.swing.JTable tblConsultar;
     // End of variables declaration//GEN-END:variables
 }

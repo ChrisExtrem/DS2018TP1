@@ -11,15 +11,16 @@ package modelo;
  */
 public class Existencia {
     
-    private int cantidad;
+    
     private Prenda prenda;
     private Color color;
     private Talle talle;
+    private int cantidad;
 
     public Existencia() {
     }
 
-    public Existencia(int cantidad, Prenda prenda, Color color, Talle talle) {
+    public Existencia(Prenda prenda, Color color, Talle talle, int cantidad) {
         this.cantidad = cantidad;
         this.prenda = prenda;
         this.color = color;

@@ -73,7 +73,7 @@ public class Persistencia {
     public static ArrayList<Solicitud> getSolicitudes() {
         return solicitudes;
     }
-
+    
     public static void setSolicitudes(ArrayList<Solicitud> solicitudes) {
         Persistencia.solicitudes = solicitudes;
     }
@@ -102,7 +102,7 @@ public class Persistencia {
         Persistencia.materiales = materiales;
     }
 
-    public ArrayList<Prenda> getPrendas() {
+    public static ArrayList<Prenda> getPrendas() {
         return prendas;
     }
 
@@ -116,18 +116,27 @@ public class Persistencia {
         Sucursal sucursalEncontrada= null;
         for(Sucursal sucursal: Persistencia.sucursales)
         {
+            sucursal.getNombre();
             if(sucursal.getNombre().equals(sucursalBuscada))
             {
                sucursalEncontrada=sucursal;
             }
         }
         return sucursalEncontrada;
+        
     }
     
     public static Prenda buscarPrenda(int prendaBuscada)
     {
-        Prenda prendaEncontrada = new Prenda();
-        
+        Prenda prendaEncontrada= null;
+        for(Prenda prenda: Persistencia.getPrendas())
+        {
+            prenda.getCodigo();
+            if(prenda.getCodigo() == prendaBuscada)
+            {
+               prendaEncontrada=prenda;
+            }
+        }
         return prendaEncontrada;
     }
     

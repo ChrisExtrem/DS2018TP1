@@ -99,46 +99,25 @@ public class Administrador {
         vexistencia.setVisible(true);
     }
     
-    public static void abrirProcesar()
-    {
-        vprocesar=new VProcesar(vconsultar,true);
-        vprocesar.setVisible(true);
-    }
-    
     public static void abrirAgregarPrenda()
     {
         vprenda=new VPrenda(vsolicitud,true); //incializar ventana Vsolicitud
-        
-        //Carga con los datos Disponibles de Colores
-                DefaultComboBoxModel modeloColor = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
-                    for(Color color: Persistencia.getColores())
-                    {  //Utiliza un ForEach 
-                        modeloColor.addElement(color.getDescripcion());   // para cargar OBJETOS en el modelo de combobox  
-                    }
-                vprenda.setComboBoxColor(modeloColor);
-        
-        //Carga con los datos Disponibles de Talles
-                DefaultComboBoxModel modeloTalle = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
-                    for(Talle talle: Persistencia.getTalles())
-                    {  //Utiliza un ForEach 
-                        modeloTalle.addElement(talle.getDescripcion());   // para cargar OBJETOS en el modelo de combobox  
-                    }
-                vprenda.setComboBoxTalle(modeloTalle);
-                
-        vprenda.setTextFielCantidad(true); //Habilita los Campos
-        vprenda.setTextFielPrenda(true);
+        Administrador.cargarCombosDeVentanaPrenda();
+        vprenda.setHabilitaCantidad(true); //Habilita los Campos
+        vprenda.setHabilitaPrenda(true);
+        vprenda.setHabilitaColor(true);
+        vprenda.setHabilitaTalle(true);
                 
         vprenda.setVisible(true); //Hace Visible la Ventana
     }
     
-    public static void abrirMdificarPrenda()
-    {
-        vprenda=new VPrenda(vsolicitud,true);
-        vprenda.setVisible(true);
-    }
-    
    public static void agregarLinea()
     {
+        if(!isInteger(vprenda.getPrenda()) || vprenda.getPrenda().isEmpty() || vprenda.getCantidad().isEmpty() || !isInteger(vprenda.getCantidad()))
+        {
+            //Muestra un msj de error ya que los datos son invalidos o los campos estan vacios
+           JOptionPane.showMessageDialog(vprenda, "Campos Vacios o Datos incorrectos, por favor ingrese numeros");
+        }else{
         //Agregacion a la tabla
         DefaultTableModel modeloTabla = (DefaultTableModel)vsolicitud.getTabla().getModel(); 
                Object[] fila = new Object[4];
@@ -151,12 +130,15 @@ public class Administrador {
                
                //Agregacion de la Linea a vsolicitud.solicitud
                LineaDeSolicitud linea = new LineaDeSolicitud();
-               linea.setPrenda(Persistencia.buscarPrenda(vprenda.getPrenda()));
+               linea.setPrenda(Persistencia.buscarPrenda(Integer.parseInt(vprenda.getPrenda())));
                linea.setTalle(Persistencia.buscarTalle(vprenda.getTalle()));
                linea.setColor(Persistencia.buscarColor(vprenda.getColor()));
-               linea.setCantidadSolicitada(vprenda.getCantidad());
+               linea.setCantidadSolicitada(Integer.parseInt(vprenda.getCantidad()));
                vsolicitud.getSolicitud().agregarLineaDeSolicitud(linea);
-               System.out.println(vprenda.getPrenda());
+               
+               //Cierra la ventana
+               vprenda.dispose();
+        }
     }
    
    public static void eliminarLinea()
@@ -179,19 +161,110 @@ public class Administrador {
     
    public static void generarSolicitud()
    {
-       Sucursal sucursalSolicitante = Persistencia.buscarSucursal(vmenu.getSucursal());
-       LocalDate fecha =LocalDate.now();
-       Solicitud solicitud = vsolicitud.getSolicitud();
-       Empresa.generarSolicitud(sucursalSolicitante,fecha,solicitud);
+       if(!vsolicitud.getSolicitud().getLista().isEmpty())//Si la solicitud esta vacia, evita guardarla
+       {
+            Sucursal sucursalSolicitante = Persistencia.buscarSucursal(vmenu.getSucursal());
+            LocalDate fecha =LocalDate.now();
+            Solicitud solicitud = vsolicitud.getSolicitud();
+            Empresa.generarSolicitud(sucursalSolicitante,fecha,solicitud);
+       }
    }
+   
+   public static void abrirProcesar()
+   {
+       int lineaSelect =vconsultar.getTabla().getSelectedRow();//identifica que linea se ha Seleccionado
+       
+       if(lineaSelect<0)
+       {
+           //Muestra un msj de error ya que la seleccion es invalida
+           JOptionPane.showMessageDialog(vconsultar, "Tabla Vacia o No Ha Seleccionado una Solicitud");
+       }else{
+           
+           //Abre la ventana para editar la solicitud
+           vprocesar=new VProcesar(vconsultar,true);
+           Solicitud solicitudSelect = Persistencia.getSolicitudes().get(lineaSelect);
+           
+           //Carga los datos de la solicitud en ella
+           vprocesar.setSolicitud(solicitudSelect);
+           DefaultTableModel modeloTabla = (DefaultTableModel)vprocesar.getTabla().getModel();
+        
+           //Carga la tabla de LineaDeSolicitud
+            for(LineaDeSolicitud linea:solicitudSelect.getLista()){
+          
+               Object[] fila = new Object[5];
+               fila[0] = linea.getPrenda().getCodigo();
+               fila[1] = linea.getColor().getDescripcion();
+               fila[2] = linea.getTalle().getDescripcion();
+               fila[3] = linea.getCantidadSolicitada();
+               fila[4] = linea.getCantidadEnviada();
+               modeloTabla.addRow(fila);
+               
+            }
+            vprocesar.setTabla(modeloTabla);
+            
+            //Carga la Sucursal Solicitante y Procesadora
+            vprocesar.setTxtSolicitante(solicitudSelect.getSucursalSolicitante().getNombre());
+            vprocesar.setTxtProcesadora(solicitudSelect.getSucursalProcesadora().getNombre());
+            
+            //Hace visible la ventana
+            vprocesar.setVisible(true);
+            
+       }
+   }
+   
+   public static void abrirModificarLinea()
+    {
+        int lineaSelect =vprocesar.getTabla().getSelectedRow();//almacena la linea seleccionada
+        
+        if(lineaSelect<0)
+       {
+           //Muestra un msj de error ya que la seleccion es invalida
+           JOptionPane.showMessageDialog(vsolicitud, "Tabla Vacia o No Ha Seleccionado una fila");
+       }else{
+           //Abre la ventana para modificarla
+       vprenda=new VPrenda(vsolicitud,true); //instancia la ventana
+       LineaDeSolicitud linea= vprocesar.getSolicitud().getLista().get(lineaSelect);
+       
+       Administrador.cargarCombosDeVentanaPrenda();
+       vprenda.setPrenda(linea.getPrenda().getCodigo());
+       vprenda.setColor(linea.getColor().getDescripcion());
+       vprenda.setTalle(linea.getTalle().getDescripcion());
+       vprenda.setHabilitaCantidad(true); //Habilita los Campos
+       vprenda.setHabilitaPrenda(false);
+       vprenda.setHabilitaColor(false);
+       vprenda.setHabilitaTalle(false);
+        
+       vprenda.setVisible(true); //Hace visible la ventana
+       }
+    }
    
    //Funciones Auxiliares
    private static boolean isInteger(String cadena){
 	try {
-		Integer.parseInt(cadena);
+		Integer.parseInt(cadena.replaceAll("//S",""));
 		return true;
 	} catch (NumberFormatException e){
 		return false;
 	}
-}
+    }   
+   
+   private static void cargarCombosDeVentanaPrenda()
+   {
+       //Carga con los datos Disponibles de Colores
+                DefaultComboBoxModel modeloColor = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
+                    for(Color color: Persistencia.getColores())
+                    {  //Utiliza un ForEach 
+                        modeloColor.addElement(color.getDescripcion());   // para cargar OBJETOS en el modelo de combobox  
+                    }
+                vprenda.setComboBoxColor(modeloColor);
+        
+        //Carga con los datos Disponibles de Talles
+                DefaultComboBoxModel modeloTalle = new DefaultComboBoxModel(); //Define un "Modelo" de ComboBox Vacio
+                    for(Talle talle: Persistencia.getTalles())
+                    {  //Utiliza un ForEach 
+                        modeloTalle.addElement(talle.getDescripcion());   // para cargar OBJETOS en el modelo de combobox  
+                    }
+                vprenda.setComboBoxTalle(modeloTalle);
+   }
+   
 }

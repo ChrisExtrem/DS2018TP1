@@ -116,7 +116,6 @@ public class Persistencia {
         Sucursal sucursalEncontrada= null;
         for(Sucursal sucursal: Persistencia.sucursales)
         {
-            sucursal.getNombre();
             if(sucursal.getNombre().equals(sucursalBuscada))
             {
                sucursalEncontrada=sucursal;
@@ -131,7 +130,6 @@ public class Persistencia {
         Prenda prendaEncontrada= null;
         for(Prenda prenda: Persistencia.getPrendas())
         {
-            prenda.getCodigo();
             if(prenda.getCodigo() == prendaBuscada)
             {
                prendaEncontrada=prenda;
@@ -142,14 +140,30 @@ public class Persistencia {
     
     public static Talle buscarTalle(String talleBuscado)
     {
-        Talle talleEncontrado = new Talle();
+        Talle talleEncontrado = null;
+        
+        for(Talle talle: Persistencia.getTalles())
+        {
+            if(talle.getDescripcion() == talleBuscado)
+            {
+               talleEncontrado=talle;
+            }
+        }
         
         return talleEncontrado;
     }
     
     public static Color buscarColor(String colorBuscado)
     {
-        Color colorEncontrado = new Color();
+        Color colorEncontrado = null;
+        
+        for(Color color: Persistencia.getColores())
+        {
+            if(color.getDescripcion() == colorBuscado)
+            {
+               colorEncontrado=color;
+            }
+        }
         
         return colorEncontrado;
     }

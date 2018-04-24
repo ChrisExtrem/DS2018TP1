@@ -5,17 +5,25 @@
  */
 package vista;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import modelo.Solicitud;
+
 /**
  *
  * @author grupo5
  */
 public class VProcesar extends javax.swing.JDialog {
+    
+    private Solicitud solicitud;
 
     public VProcesar(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,10 +45,15 @@ public class VProcesar extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ventana Procesa Solicitud");
+        setLocation(new java.awt.Point(400, 200));
 
         jLabel1.setText("Sucursal Solicitante");
 
         jLabel2.setText("Sucursal Procesadora");
+
+        txtSolicitante.setEditable(false);
+
+        txtProcesadora.setEditable(false);
 
         CANCEL.setText("Cancelar");
         CANCEL.addActionListener(new java.awt.event.ActionListener() {
@@ -56,14 +69,19 @@ public class VProcesar extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tblLinea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Talle", "Color", "Cant_Solicitada"
+                "Codigo", "Talle", "Color", "Cant_Solicitada", "Cant_Enviada"
             }
         ));
         jScrollPane1.setViewportView(tblLinea);
@@ -75,9 +93,9 @@ public class VProcesar extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(OK)
-                .addGap(54, 54, 54)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(81, 81, 81)
                 .addComponent(CANCEL)
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
@@ -87,11 +105,11 @@ public class VProcesar extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(txtSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addGap(14, 14, 14)
-                        .addComponent(txtProcesadora, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtProcesadora, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -125,6 +143,11 @@ public class VProcesar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_OKActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Administrador.abrirModificarLinea();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,4 +164,39 @@ public class VProcesar extends javax.swing.JDialog {
     private javax.swing.JTextField txtProcesadora;
     private javax.swing.JTextField txtSolicitante;
     // End of variables declaration//GEN-END:variables
+
+    
+    //Metodos
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
+    }
+
+    public JTable getTabla() {
+        return tblLinea;
+    }
+
+    public void setTabla(DefaultTableModel tabla) {
+        this.tblLinea.setModel(tabla);
+    }
+    
+    public String getTxtProcesadora() {
+        return txtProcesadora.getText();
+    }
+
+    public void setTxtProcesadora(String txtProcesadora) {
+        this.txtProcesadora.setText(txtProcesadora);
+    }
+
+    public String getTxtSolicitante() {
+        return txtSolicitante.getText();
+    }
+
+    public void setTxtSolicitante(String txtSolicitante) {
+        this.txtSolicitante.setText(txtSolicitante);
+    }
+    
 }

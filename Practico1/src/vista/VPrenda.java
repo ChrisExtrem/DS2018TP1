@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -139,28 +140,27 @@ public class VPrenda extends javax.swing.JDialog {
         {
            Administrador.agregarLinea();
         }
-        
-        this.dispose();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     //Metodos
     //Cantidad
-    public int getCantidad() {
-        return Integer.parseInt(txtCantidad.getText().trim());
+    public String getCantidad() {
+        return txtCantidad.getText();
     }
 
     public void setCantidad(int cantidad) {
         this.txtCantidad.setText(Integer.toString(cantidad));
     }
     
-    public void setTextFielCantidad(boolean b){
-        this.txtCantidad.setEnabled(b);
+    public void setHabilitaCantidad(boolean b){
+        this.txtCantidad.setEditable(b);
     }
 
     //Prenda
-    public int getPrenda()
+    public String getPrenda()
     {
-        return Integer.parseInt(txtPrenda.getText());
+        return txtPrenda.getText();
     }
     
     public void setPrenda (int prenda)
@@ -168,8 +168,8 @@ public class VPrenda extends javax.swing.JDialog {
         this.txtPrenda.setText(Integer.toString(prenda));
     }
     
-    public void setTextFielPrenda(boolean b){
-        this.txtPrenda.setEnabled(b);
+    public void setHabilitaPrenda(boolean b){
+        this.txtPrenda.setEditable(b);
     }
     
     //Talle
@@ -187,6 +187,11 @@ public class VPrenda extends javax.swing.JDialog {
     {
         this.cmbTalle.setModel(combo);
     }
+    
+    public void setHabilitaTalle(boolean b)
+    {
+        this.cmbTalle.setEditable(b);
+    }
  
     //Color
     public String getColor()
@@ -202,6 +207,13 @@ public class VPrenda extends javax.swing.JDialog {
     public void setComboBoxColor (DefaultComboBoxModel combo)
     {
         this.cmbColor.setModel(combo);
+    }
+    
+    public void setHabilitaColor(boolean b)
+    {
+        this.cmbColor.setEditable(b);
+        this.cmbColor.setPopupVisible(!b);
+        
     }
     
     //Metodos Auxiliares - Validacion

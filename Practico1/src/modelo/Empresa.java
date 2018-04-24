@@ -21,7 +21,12 @@ public class Empresa {
         solicitud.setSucursalSolicitante(sucursalSolicitante);
         solicitud.setDate(fecha);
         solicitud.setEstado(Estado.PENDIENTE);
-        solicitud.setSucursalProcesadora(new Sucursal(0,"No_Disponible","No_Disponible"));
+        solicitud.setSucursalProcesadora(new Sucursal(0,"No_Definida","No_Disponible"));
+        
+        for(LineaDeSolicitud linea:solicitud.getLista())
+        {
+            linea.setCantidadEnviada(0);
+        }
         
         Persistencia.agregarSolicitud(solicitud);
         

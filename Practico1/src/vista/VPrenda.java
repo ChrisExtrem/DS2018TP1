@@ -136,9 +136,11 @@ public class VPrenda extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(this.txtPrenda.isEnabled())
+        if(this.txtPrenda.isEditable())
         {
-           Administrador.agregarLinea();
+            Administrador.agregarLinea();
+        }else{
+            Administrador.modificarLinea();
         }
        
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -192,6 +194,13 @@ public class VPrenda extends javax.swing.JDialog {
     {
         this.cmbTalle.setEditable(b);
     }
+    
+    public void setTalleOnlyOption (String option)
+    {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addElement(option);
+        this.cmbTalle.setModel(modelo);
+    }
  
     //Color
     public String getColor()
@@ -212,8 +221,13 @@ public class VPrenda extends javax.swing.JDialog {
     public void setHabilitaColor(boolean b)
     {
         this.cmbColor.setEditable(b);
-        this.cmbColor.setPopupVisible(!b);
-        
+    }
+    
+    public void setColorOnlyOption (String option)
+    {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo.addElement(option);
+        this.cmbColor.setModel(modelo);
     }
     
     //Metodos Auxiliares - Validacion

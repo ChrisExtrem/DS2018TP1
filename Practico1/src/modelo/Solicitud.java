@@ -13,14 +13,14 @@ import java.time.LocalDate;
  *
  * @author chris
  */
-public class Solicitud {
+public class Solicitud{
     
-    private Sucursal sucursalSolicitante;
     private LocalDate date;
     private Estado estado;
-    
-    private ArrayList<LineaDeSolicitud> lista = new ArrayList<LineaDeSolicitud>(); //Lista de la Linea de Solicitudes
+    private Sucursal sucursalSolicitante;
     private Sucursal SucursalProcesadora;
+    private ArrayList<LineaDeSolicitud> lista = new ArrayList<LineaDeSolicitud>(); //Lista de la Linea de Solicitudes
+    
     
 
     public Solicitud() {
@@ -36,6 +36,16 @@ public class Solicitud {
         this.sucursalSolicitante = sucursalSolicitante;
         this.date = date;
     }
+
+    public Solicitud(LocalDate date, Estado estado, Sucursal sucursalSolicitante, Sucursal SucursalProcesadora) {
+        this.date = date;
+        this.estado = estado;
+        this.sucursalSolicitante = sucursalSolicitante;
+        this.SucursalProcesadora = SucursalProcesadora;
+    }
+    
+    
+    
 
     //Metodos
     public Estado getEstado() {
@@ -87,6 +97,5 @@ public class Solicitud {
     public String toString() {
         return "Solicitud{" + "sucursalSolicitante=" + sucursalSolicitante + ", date=" + date + ", estado=" + estado + ", lista=" + lista + ", SucursalProcesadora=" + SucursalProcesadora + '}';
     }
-    
-    
+        
 }

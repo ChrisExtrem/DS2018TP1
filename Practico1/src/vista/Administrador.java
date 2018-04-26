@@ -105,8 +105,6 @@ public class Administrador {
         Administrador.cargarCombosDeVentanaPrenda();
         vprenda.setHabilitaCantidad(true); //Habilita los Campos
         vprenda.setHabilitaPrenda(true);
-        vprenda.setHabilitaColor(true);
-        vprenda.setHabilitaTalle(true);
                 
         vprenda.setVisible(true); //Hace Visible la Ventana
     }
@@ -182,7 +180,7 @@ public class Administrador {
            
            //Abre la ventana para editar la solicitud
            vprocesar=new VProcesar(vconsultar,true);
-           Solicitud solicitudSelect = Persistencia.getSolicitudes().get(lineaSelect);
+           Solicitud solicitudSelect = (Solicitud)Persistencia.getSolicitudes().get(lineaSelect);
            
            //Carga los datos de la solicitud en ella
            vprocesar.setSolicitud(solicitudSelect);
@@ -214,29 +212,57 @@ public class Administrador {
    
    public static void abrirModificarLinea()
     {
-        int lineaSelect =vprocesar.getTabla().getSelectedRow();//almacena la linea seleccionada
-        
+        int lineaSelect =vprocesar.getTabla().getSelectedRow();//almacena la linea seleccionada 
         if(lineaSelect<0)
        {
            //Muestra un msj de error ya que la seleccion es invalida
-           JOptionPane.showMessageDialog(vsolicitud, "Tabla Vacia o No Ha Seleccionado una fila");
+           JOptionPane.showMessageDialog(vprocesar, "Tabla Vacia o No Ha Seleccionado una fila");
        }else{
            //Abre la ventana para modificarla
-       vprenda=new VPrenda(vsolicitud,true); //instancia la ventana
+       vprenda=new VPrenda(vprocesar,true); //instancia la ventana
        LineaDeSolicitud linea= vprocesar.getSolicitud().getLista().get(lineaSelect);
        
-       Administrador.cargarCombosDeVentanaPrenda();
-       vprenda.setPrenda(linea.getPrenda().getCodigo());
-       vprenda.setColor(linea.getColor().getDescripcion());
-       vprenda.setTalle(linea.getTalle().getDescripcion());
-       vprenda.setHabilitaCantidad(true); //Habilita los Campos
-       vprenda.setHabilitaPrenda(false);
-       vprenda.setHabilitaColor(false);
-       vprenda.setHabilitaTalle(false);
-        
+       vprenda.setPrenda(linea.getPrenda().getCodigo()); //Establece el codigo de prenda
+       vprenda.setHabilitaPrenda(false); //Deshabilita el campo Prenda
+       vprenda.setColorOnlyOption(linea.getColor().getDescripcion()); //Estable solo una opcion
+       vprenda.setTalleOnlyOption(linea.getTalle().getDescripcion()); //Estable solo una opcion
+       vprenda.setHabilitaCantidad(true); //Habilita el campo Cantidad
+       
        vprenda.setVisible(true); //Hace visible la ventana
        }
     }
+   
+   public static void modificarLinea()
+   {
+       int lineaSelect =vprocesar.getTabla().getSelectedRow();//almacena la linea seleccionada 
+       
+       if(!isInteger(vprenda.getPrenda()) || vprenda.getPrenda().isEmpty() || vprenda.getCantidad().isEmpty() || !isInteger(vprenda.getCantidad()))
+       {
+            //Muestra un msj de error ya que los datos son invalidos o los campos estan vacios
+          JOptionPane.showMessageDialog(vprenda, "Campos Vacios o Datos incorrectos, por favor ingrese numeros");
+       }else{
+            //Agregacion a la tabla
+               DefaultTableModel modeloTabla = (DefaultTableModel)vprocesar.getTabla().getModel(); 
+               
+               vprocesar.setTabla(modeloTabla);
+               modeloTabla.setValueAt(vprenda.getCantidad(), lineaSelect, 4); //Setea la Cantidad Enviada
+               
+               //Cierra la ventana
+               vprenda.dispose();
+        }
+       
+   }
+   
+   public static void actualizarLineas()
+   {
+       DefaultTableModel modeloTabla = (DefaultTableModel)vprocesar.getTabla().getModel(); 
+               int i =0;
+               for(LineaDeSolicitud linea:vprocesar.getSolicitud().getLista())
+               {
+                   linea.setCantidadEnviada(Integer.parseInt((String)modeloTabla.getValueAt(i, 4)));
+                   i++;
+               }
+   }
    
    //Funciones Auxiliares
    private static boolean isInteger(String cadena){

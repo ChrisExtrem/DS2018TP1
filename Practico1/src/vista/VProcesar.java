@@ -141,6 +141,8 @@ public class VProcesar extends javax.swing.JDialog {
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
         // TODO add your handling code here:
+        Administrador.actualizarLineas();
+        this.dispose();
     }//GEN-LAST:event_OKActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -74,6 +74,21 @@ public class Persistencia {
         return solicitudes;
     }
     
+    /*public static Solicitud getSolicitudIndex(int index)
+    {
+        Solicitud resultado = null;
+        int i=0;
+        for(Solicitud solicitud: solicitudes)
+        {
+            if(index==i)
+            {
+                resultado=solicitud;
+            }
+            i++;
+        }
+        return resultado;
+    }*/
+    
     public static void setSolicitudes(ArrayList<Solicitud> solicitudes) {
         Persistencia.solicitudes = solicitudes;
     }

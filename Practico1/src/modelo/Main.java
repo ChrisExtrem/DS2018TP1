@@ -70,6 +70,10 @@ public class Main {
         Persistencia.buscarSucursal("Sucursal_1").agregarExistencia(ex1);
         Persistencia.buscarSucursal("Sucursal_1").agregarExistencia(ex2);
         
+        Existencia ex3 = new Existencia(prend2, c2, t2, 100);
+        
+        Persistencia.buscarSucursal("Sucursal_2").agregarExistencia(ex2);
+        
         
         /*LocalDate fecha =  LocalDate.now();
         System.out.println(fecha);

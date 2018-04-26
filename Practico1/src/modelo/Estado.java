@@ -9,7 +9,7 @@ package modelo;
  *
  * @author chris
  */
-public enum Estado {
+public enum Estado{
     
     PENDIENTE(0,"Pendiente"), RESUELTA(1,"Resuelta"), RESUELTAPARCIALMENTE(2,"Parcialmente");
     
@@ -43,6 +43,5 @@ public enum Estado {
     public void setTexto(String Texto) {
         this.Texto = Texto;
     }
-    
     
 }

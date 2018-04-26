@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author chris
  */
-public class Sucursal {
+public class Sucursal{
     
     private int numero;
     private String nombre;
@@ -68,7 +68,5 @@ public class Sucursal {
     public String toString() {
         return nombre;
     }
-    
-    
-    
+     
 }

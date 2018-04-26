@@ -113,7 +113,6 @@ public class VConsultar extends javax.swing.JDialog {
 
     private void procesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarActionPerformed
         // TODO add your handling code here:
-        //this.controlador.llamadoMenu("MENU_PROCESAR");
         Administrador.abrirProcesar();
     }//GEN-LAST:event_procesarActionPerformed
 

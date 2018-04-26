@@ -81,7 +81,7 @@ public class VProcesar extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Codigo", "Talle", "Color", "Cant_Solicitada", "Cant_Enviada"
+                "Codigo", "Color", "Talle", "Cant_Solicitada", "Cant_Enviada"
             }
         ));
         jScrollPane1.setViewportView(tblLinea);

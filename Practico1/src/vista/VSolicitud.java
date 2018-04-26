@@ -64,7 +64,7 @@ public class VSolicitud extends javax.swing.JDialog{
 
             },
             new String [] {
-                "Codigo", "Talle", "Color", "Cant_Solicitada"
+                "Codigo", "Color", "Talle", "Cant_Solicitada"
             }
         ));
         jScrollPane1.setViewportView(tblLinea);
